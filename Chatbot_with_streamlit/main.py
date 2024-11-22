@@ -3,10 +3,60 @@ from langchain.chains import ConversationChain
 from langchain.chains.conversation.memory import ConversationBufferWindowMemory
 from langchain_groq import ChatGroq
 
-# Function to load the external CSS file
-def load_css(file_name):
-    with open(file_name) as f:
-        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+# Function to load the CSS inline
+def load_inline_css():
+    css = """
+    body {
+        background-color: #f5f7fa;
+    }
+
+    .main {
+        padding: 20px;
+        background-color: #f5f7fa;
+    }
+
+    .chat-container {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .user-input {
+        font-size: 1.1rem;
+        padding: 10px;
+        background-color: #e0f7fa;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+
+    .ai-response {
+        font-size: 1.1rem;
+        padding: 10px;
+        background-color: #e8f5e9;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+
+    .sidebar .block-container {
+        background-color: #f5f7fa;
+    }
+
+    button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+    """
+    st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
 
 def initialize_session():
     """Initialize session state variables."""
@@ -22,8 +72,8 @@ def main():
     # Set up page configuration
     st.set_page_config(page_title="Groq LLM SaaS Playground", page_icon="🤖", layout="wide")
 
-    # Load external CSS
-    load_css("styles.css")
+    # Load inline CSS
+    load_inline_css()
 
     st.title("🤖 Groq LLM SaaS Playground")
     st.sidebar.title("⚙️ Application Settings")
