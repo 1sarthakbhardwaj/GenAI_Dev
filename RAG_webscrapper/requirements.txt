@@ -1,0 +1,10 @@
+langchain
+langchain-core
+langchain-community
+langchain-groq
+sentence-transformers
+faiss-cpu
+chromadb
+bs4
+python-dotenv
+langchain-chroma
